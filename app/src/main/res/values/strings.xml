@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RazrIChargeCurrent</string>
+    <string name="help_text">This program allows overriding the battery charging current. Beware that too high charging currents may harm the device where you plug the USB cable! The author of this application is not responsible for any damages caused!</string>
+    <string name="lim_500">Limit to 500 mA</string>
+    <string name="lim_no">Default behaviour to USB spec</string>
+    <string name="lim_ovr_950">Override to 950 mA</string>
+    <string name="lim_ovr_inf">Override to maximum current</string>
+</resources>
