@@ -1,8 +1,10 @@
 package matthias.razrichargecurrent;
 
+import android.content.Intent;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RadioGroup;
 
 import java.io.FileInputStream;
@@ -49,32 +51,43 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ((RadioGroup) findViewById(R.id.grp_curr)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-              public void onCheckedChanged(RadioGroup group, int checkedId) {
-                  int v = 0;
-                  switch (checkedId) {
-                      case R.id.rad_lim_no:
-                          v = 4;
-                          break;
-                      case R.id.rad_lim_500:
-                          v = 3;
-                          break;
-                      case R.id.rad_ovr_950:
-                          v = 5;
-                          break;
-                      case R.id.rad_ovr_inf:
-                          v = 6;
-                          break;
-                  }
-                  MainActivity.setSettings(v);
-              }
-          }
-        );
+        ((RadioGroup) findViewById(R.id.grp_curr)).
+                setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                                               public void onCheckedChanged(RadioGroup group, int checkedId) {
+                                                   int v = 0;
+                                                   switch (checkedId) {
+                                                       case R.id.rad_lim_no:
+                                                           v = 4;
+                                                           break;
+                                                       case R.id.rad_lim_500:
+                                                           v = 3;
+                                                           break;
+                                                       case R.id.rad_ovr_950:
+                                                           v = 5;
+                                                           break;
+                                                       case R.id.rad_ovr_inf:
+                                                           v = 6;
+                                                           break;
+                                                   }
+                                                   MainActivity.setSettings(v);
+                                               }
+                                           }
+                );
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         this.updateSettings();
+    }
+
+    public void showHelp(View view) {
+        Intent intent = new Intent(this, HelpActivity.class);
+        startActivity(intent);
+    }
+
+    public void showLicense(View view) {
+        Intent intent = new Intent(this, LicenseActivity.class);
+        startActivity(intent);
     }
 }
